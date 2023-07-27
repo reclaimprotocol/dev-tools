@@ -1,0 +1,25 @@
+{
+  "name": "dev-tool",
+  "version": "1.0.0",
+  "description": "Dev tool that simplifies http provider creation",
+  "main": "index.js",
+  "scripts": {
+    "compile:proto": "sh ./src/scripts/compile-proto.sh",
+    "start:tsc": "ts-node src/scripts/start-server"
+  },
+  "author": "Sweta Shaw",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "long": "^5.2.3",
+    "nice-grpc": "^2.1.4",
+    "pino": "^8.14.1",
+    "protobufjs": "^7.2.4"
+  },
+  "devDependencies": {
+    "@creatoros/eslint-config": "git+https://github.com/CreatorOS/eslint-config",
+    "grpc-tools": "^1.12.4",
+    "ts-node": "^10.9.1",
+    "ts-proto": "^1.152.1"
+  }
+}
