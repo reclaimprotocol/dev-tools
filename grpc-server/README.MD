@@ -1,6 +1,6 @@
 # GRPC SERVER
 ## Description
-This is a server that helps in establishing communication channel between the web and client app for Reclaim
+This is a server that helps in establishing communication channel between the web and client app for developing http providers
 
 ## Run it locally
 1. Clone the repo
