@@ -72,13 +72,15 @@ const joinSession: RPCPromiseHandler<'joinSession'> = async(
 	session.mobileClient = context
 
 	// send CONNECTED message to web client
+	logger.info('Send CONNECTED message to web client')
 	session.webClientMessageQueue.push({
 		message: 'Mobile client connected',
 		type: ChatMessageType.CONNECTED
 	})
 
 	// send CONNECTED message to mobile client
-	session.appclientMessageQueue.push({
+	logger.info('Send CONNECTED message to mobile client')
+	session.mobileClientMessageQueue.push({
 		message: 'Web client connected',
 		type: ChatMessageType.CONNECTED
 	})
@@ -101,6 +103,8 @@ const sendMessage: RPCPromiseHandler<'sendMessage'> = async(
 	if(!sessionId) {
 		throw new ServerError(Status.FAILED_PRECONDITION, 'Session ID not found')
 	}
+
+	logger.info(`[SEND MESSAGE] Send message request: ${sessionId}`)
 
 	// get session from sessions map
 	const session = sessions.get(sessionId)
@@ -176,14 +180,14 @@ const receiveMessage: RPCPromiseHandler<'receiveMessage'> = async function* (
 
 	// send message to the client
 	if(clientType === CLIENT_TYPE.WEB) {
-		logger.info('web client receiving message')
+		logger.info('[WEB RECEIVE MESSAGE] web client receiving message')
 		while(session.webClientMessageQueue.length > 0) {
 			yield session.webClientMessageQueue.shift()
 		}
 	}
 
 	if(clientType === CLIENT_TYPE.MOBILE) {
-		logger.info('mobile client receiving message')
+		logger.info('[APP RECEIVE MESSAGE] web client receiving message')
 		while(session.mobileClientMessageQueue.length > 0) {
 			yield session.mobileClientMessageQueue.shift()
 		}

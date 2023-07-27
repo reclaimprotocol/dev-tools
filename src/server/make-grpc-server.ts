@@ -68,6 +68,7 @@ async function* validateRPC<Req, Res>(
 				return result
 			}
 		}
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	} catch(error: any) {
 		logger.error(error, 'RPC error')
 		if(error instanceof ServerError) {
