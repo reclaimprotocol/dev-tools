@@ -4,8 +4,10 @@
   "description": "Dev tool that simplifies http provider creation",
   "main": "index.js",
   "scripts": {
-    "compile:proto": "sh ./src/scripts/compile-proto.sh",
-    "start:tsc": "ts-node src/scripts/start-server"
+    "build": "npm exec tsc",
+    "start": "node ./build",
+    "start:tsc": "npm exec ts-node src",
+    "compile:proto": "sh ./src/scripts/compile-proto.sh"
   },
   "author": "Sweta Shaw",
   "license": "ISC",
