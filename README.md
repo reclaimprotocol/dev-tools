@@ -6,5 +6,7 @@ This tool helps in establishing communication channel between the web and client
 ## Instructions
 
 
-1. Run the envoy proxy before starting to use the server with your client app. Refer [here](envoy/README.md) to know how to run envoy proxy.
-2. Start the server by following the steps mentioned in [here](grpc-server/README.md)
+1. Clone the repo
+2. Make sure you have Docker installed
+3. Run `docker-compose up -d` to start the containers
+4. You can access server at `http://localhost:8080`
