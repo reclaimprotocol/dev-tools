@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package channel;
+
+service SessionService {
+  rpc GenerateSession (Empty) returns (SessionResponse) {}
+  rpc JoinSession (JoinSessionRequest) returns (SessionResponse) {}
+  rpc SendMessage (ChatMessage) returns (Empty) {}
+  rpc ReceiveMessage (Empty) returns (stream ChatMessage) {}
+}
+
+enum ClientType {
+  WEB = 0;
+  MOBILE = 1;
+}
+
+message Empty {}
+
+message JoinSessionRequest {
+  string session_id = 1;
+}
+
+enum SessionResponseStatusType {
+  SUCCESS = 0;
+  FAILURE = 1;
+}
+
+message SessionResponse {
+  string session_id = 1;
+  SessionResponseStatusType status = 2;
+}
+
+enum ChatMessageType {
+  W_TARGET_URL_RECEIVED = 0;
+  W_NETWORK_REQUESTS_AND_RESPONSES_RECEIVED = 1;
+  W_POTENTIAL_NETWORK_REQUEST = 2;
+  W_POTENTIAL_NETWORK_REQUEST_TEST_RESULT_RECEIVED = 3;
+  W_LOGIN_URL_RECEIVED = 4;
+  W_RECLAIM_URL = 5;
+  W_RECLAIM_URL_TEST_RESULT_RECEIVED = 6;
+  M_TARGET_URL = 7;
+  M_NETWORK_REQUESTS_AND_RESPONSES = 8;
+  M_POTENTIAL_NETWORK_REQUEST_RECEIVED = 9;
+  M_POTENTIAL_NETWORK_REQUEST_TEST_RESULT = 10;
+  M_LOGIN_URL = 11;
+  M_RECLAIM_URL_RECEIVED = 12;
+  M_RECLAIM_URL_TEST_RESULT = 13;
+  CONNECTION_PENDING = 14;
+  CONNECTED = 15;
+}
+
+message ChatMessage {
+  string message = 1;
+  ChatMessageType type = 2;
+}
