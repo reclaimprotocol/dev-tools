@@ -4,7 +4,7 @@
 	  "module": "commonjs",
 	  "allowJs": true,
 	  "checkJs": false,
-	  "outDir": "lib",
+	  "outDir": "dist",
 	  "strict": false,
 	  "strictNullChecks": true,
 	  "noImplicitThis": true,
@@ -13,7 +13,7 @@
 	  "forceConsistentCasingInFileNames": true,
 	  "declaration": true,
 	  "resolveJsonModule": true,
-	  "lib": [ "es2020", "DOM" ]
+	  "lib": [ "es2020", "DOM", "DOM.Iterable", "ScriptHost", "ESNext", "ES2016.Array.Include" ]
 	},
 	"include": [
 	  "src/*.ts", 
