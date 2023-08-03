@@ -1,5 +1,5 @@
 {
-  "name": "dev-tool-client-sdk",
+  "name": "@reclaim-dev-tool/dev-tool-client-sdk",
   "version": "0.0.0",
   "main": "./lib/index.js",
   "author": {
