@@ -50,7 +50,7 @@ jobs:
           aws_access_key: "${{secrets.AWS_ACCESS_KEY}}"
           aws_secret_key: "${{secrets.AWS_SECRET_KEY}}"
           application_name: reclaim-dev-tool
-          environment_name: reclaim-dev-tool
+          environment_name: reclaim-dev-tool-env
           version_label: "${{ github.event.repository.name }}-${{ steps.format-time.outputs.replaced }}"
           region: "ap-south-1"
           deployment_package: deploy.zip
