@@ -1,7 +1,7 @@
 {
   "name": "@reclaim-dev-tool/dev-tool-client-sdk",
   "version": "0.0.0",
-  "main": "./lib/index.js",
+  "main": "./dist/index.js",
   "author": {
     "name": "Sweta Shaw"
   },
