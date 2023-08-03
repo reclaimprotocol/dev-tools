@@ -1,0 +1,52 @@
+name: Deploy
+on:
+  # activates the workflow when there is a push on the main branch
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest # the operating system your job will run on
+    steps:
+      - name: Checkout Latest Repo
+        # clone the repo
+        uses: actions/checkout@v2
+
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v1
+
+      - name: Install grpc-server
+        run: |
+          cd grpc-server
+          npm install
+          npm run build
+        
+      - name: Generate Deployment Package 
+        # zip all files except .git and dev-tool-client-sdk folder
+        run: zip -r deploy.zip * -x '*.git*' -x 'dev-tool-client-sdk*'
+
+      - name: Get timestamp
+        uses: gerred/actions/current-time@master
+        id: current-time
+        
+      - name: Run string replace
+        uses: frabert/replace-string-action@master
+        id: format-time
+        with:
+          # replaces '[:\.]+' in the timestamp with '-'
+          pattern: '[:\.]+'
+          string: "${{ steps.current-time.outputs.time }}"
+          replace-with: '-'
+          flags: 'g'
+          
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v14
+        with:
+        # Input the credentials you used to setup AWS CLI and credentials for the application environment
+          aws_access_key: "${{secrets.AWS_ACCESS_KEY}}"
+          aws_secret_key: "${{secrets.AWS_SECRET_KEY}}"
+          application_name: dev-tool
+          environment_name: dev-tool
+          version_label: "${{ github.event.repository.name }}-${{ steps.format-time.outputs.replaced }}"
+          region: "ap-south-1"
+          deployment_package: deploy.zip
