@@ -20,7 +20,11 @@ jobs:
           cd grpc-server
           npm install
           npm run build
-        
+          
+      - name: Trim Deployment Pkg
+        run: |
+          rm -rf **/node_modules
+
       - name: Generate Deployment Package 
         # zip all files except .git and dev-tool-client-sdk folder
         run: zip -r deploy.zip * -x '*.git*' -x 'dev-tool-client-sdk*'
