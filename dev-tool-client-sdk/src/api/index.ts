@@ -1,13 +1,11 @@
 import { Metadata } from 'nice-grpc-web'
 import { ChatMessage, ClientType, SessionResponse } from '../generated/channel'
 import { makeGrpcClient } from '../api-client'
-
-
 export class ChatBackendClient {
 	private readonly accessToken: string
-	private readonly clientType: ClientType
+	private readonly clientType: string
 
-	constructor(accessToken: string, clientType: ClientType) {
+	constructor(accessToken: string, clientType: string) {
 		this.accessToken = accessToken
 		this.clientType = clientType
 	}
@@ -43,7 +41,7 @@ export class ChatBackendClient {
 		const client = await this.getClient()
 		const metadata = new Metadata()
 		metadata.set('session-id', sessionId)
-		metadata.set('client-type', this.clientType as unknown as string)
+		metadata.set('client-type', this.clientType)
 		metadata.set('Authorization', this.accessToken)
 		try {
 			const response = await client.sendMessage({
@@ -64,7 +62,7 @@ export class ChatBackendClient {
 		const client = await this.getClient()
 		const metadata = new Metadata()
 		metadata.set('session-id', sessionId)
-		metadata.set('client-type', this.clientType as unknown as string)
+		metadata.set('client-type', this.clientType)
 		metadata.set('Authorization', this.accessToken)
 
 		const messages: ChatMessage[] = []

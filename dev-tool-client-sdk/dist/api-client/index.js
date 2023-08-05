@@ -17,9 +17,8 @@ const grpc_web_react_native_transport_1 = require("@improbable-eng/grpc-web-reac
 function makeGrpcClient(accessToken, clientType) {
     return __awaiter(this, void 0, void 0, function* () {
         // grpc-web channel
-        // both the witness & backend can be accessed from this 
         let channel;
-        if (clientType === channel_1.ClientType.MOBILE) {
+        if (clientType === 'app') {
             const transport = (0, grpc_web_react_native_transport_1.ReactNativeTransport)({
                 withCredentials: false,
             });

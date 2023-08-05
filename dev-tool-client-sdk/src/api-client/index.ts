@@ -1,13 +1,12 @@
 import { Channel, createChannel, createClient, Metadata } from 'nice-grpc-web'
 import { BACKEND_URL } from '../config'
-import { ClientType, SessionServiceClient, SessionServiceDefinition } from '../generated/channel'
+import { SessionServiceClient, SessionServiceDefinition } from '../generated/channel'
 import {ReactNativeTransport} from '@improbable-eng/grpc-web-react-native-transport'
 
-async function makeGrpcClient(accessToken: string, clientType: ClientType) {
+async function makeGrpcClient(accessToken: string, clientType: string) {
 	// grpc-web channel
-	// both the witness & backend can be accessed from this 
 	let channel: Channel
-	if(clientType === ClientType.MOBILE) {
+	if(clientType === 'app') {
 		const transport = ReactNativeTransport({
 			withCredentials: false,
 		});
@@ -20,7 +19,7 @@ async function makeGrpcClient(accessToken: string, clientType: ClientType) {
 	const metadata = new Metadata()
 
 	metadata.set('Authorization', accessToken)
-	metadata.set('client-type', clientType as unknown as string)
+	metadata.set('client-type', clientType)
 	// actual client to communicate with backend
 	const client: SessionServiceClient = createClient(
 		SessionServiceDefinition,
