@@ -1,3 +1,3 @@
-import { SessionServiceClient } from '../generated/channel';
-declare function makeGrpcClient(accessToken: string, clientType: string): Promise<SessionServiceClient<{}>>;
+import { ClientType, SessionServiceClient } from '../generated/channel';
+declare function makeGrpcClient(accessToken: string, clientType: ClientType): Promise<SessionServiceClient<{}>>;
 export { makeGrpcClient };

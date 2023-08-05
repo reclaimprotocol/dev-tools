@@ -13,11 +13,21 @@ exports.makeGrpcClient = void 0;
 const nice_grpc_web_1 = require("nice-grpc-web");
 const config_1 = require("../config");
 const channel_1 = require("../generated/channel");
+const grpc_web_react_native_transport_1 = require("@improbable-eng/grpc-web-react-native-transport");
 function makeGrpcClient(accessToken, clientType) {
     return __awaiter(this, void 0, void 0, function* () {
         // grpc-web channel
-        // both the witness & backend can be accessed from this URL
-        const channel = (0, nice_grpc_web_1.createChannel)(config_1.BACKEND_URL);
+        // both the witness & backend can be accessed from this 
+        let channel;
+        if (clientType === channel_1.ClientType.MOBILE) {
+            const transport = (0, grpc_web_react_native_transport_1.ReactNativeTransport)({
+                withCredentials: false,
+            });
+            channel = (0, nice_grpc_web_1.createChannel)(config_1.BACKEND_URL, transport);
+        }
+        else {
+            channel = (0, nice_grpc_web_1.createChannel)(config_1.BACKEND_URL);
+        }
         // metadata for auth token
         const metadata = new nice_grpc_web_1.Metadata();
         metadata.set('Authorization', accessToken);

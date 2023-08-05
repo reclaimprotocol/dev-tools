@@ -7,9 +7,10 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@improbable-eng/grpc-web-react-native-transport": "^0.15.0",
     "grpc-tools": "^1.12.4",
     "nice-grpc-common": "^2.0.2",
-    "nice-grpc-web": "^3.3.1",
+    "nice-grpc-web": "^2.0.2",
     "protobufjs": "^7.2.4",
     "ts-proto": "^1.156.2",
     "tslint": "^6.1.3",

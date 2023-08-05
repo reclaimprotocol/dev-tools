@@ -1,8 +1,8 @@
-import { ChatMessage, SessionResponse } from '../generated/channel';
+import { ChatMessage, ClientType, SessionResponse } from '../generated/channel';
 export declare class ChatBackendClient {
     private readonly accessToken;
     private readonly clientType;
-    constructor(accessToken: string, clientType: string);
+    constructor(accessToken: string, clientType: ClientType);
     private getClient;
     generateSessionId(): Promise<SessionResponse>;
     joinSession(sessionId: string): Promise<SessionResponse>;
