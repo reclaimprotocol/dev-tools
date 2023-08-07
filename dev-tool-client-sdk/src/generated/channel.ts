@@ -71,14 +71,14 @@ export function sessionResponseStatusTypeToJSON(object: SessionResponseStatusTyp
 }
 
 export enum ChatMessageType {
-  W_TARGET_URL_RECEIVED = 0,
+  M_TARGET_URL_RECEIVED = 0,
   W_NETWORK_REQUESTS_AND_RESPONSES_RECEIVED = 1,
   W_POTENTIAL_NETWORK_REQUEST = 2,
   W_POTENTIAL_NETWORK_REQUEST_TEST_RESULT_RECEIVED = 3,
   W_LOGIN_URL_RECEIVED = 4,
   W_RECLAIM_URL = 5,
   W_RECLAIM_URL_TEST_RESULT_RECEIVED = 6,
-  M_TARGET_URL = 7,
+  TARGET_URL = 7,
   M_NETWORK_REQUESTS_AND_RESPONSES = 8,
   M_POTENTIAL_NETWORK_REQUEST_RECEIVED = 9,
   M_POTENTIAL_NETWORK_REQUEST_TEST_RESULT = 10,
@@ -87,14 +87,17 @@ export enum ChatMessageType {
   M_RECLAIM_URL_TEST_RESULT = 13,
   CONNECTION_PENDING = 14,
   CONNECTED = 15,
+  FORCE_REFRESH = 16,
+  CAPTURE_CURRENT_PAGE_SOURCE = 17,
+  CAPTURE_COOKIES = 18,
   UNRECOGNIZED = -1,
 }
 
 export function chatMessageTypeFromJSON(object: any): ChatMessageType {
   switch (object) {
     case 0:
-    case "W_TARGET_URL_RECEIVED":
-      return ChatMessageType.W_TARGET_URL_RECEIVED;
+    case "M_TARGET_URL_RECEIVED":
+      return ChatMessageType.M_TARGET_URL_RECEIVED;
     case 1:
     case "W_NETWORK_REQUESTS_AND_RESPONSES_RECEIVED":
       return ChatMessageType.W_NETWORK_REQUESTS_AND_RESPONSES_RECEIVED;
@@ -114,8 +117,8 @@ export function chatMessageTypeFromJSON(object: any): ChatMessageType {
     case "W_RECLAIM_URL_TEST_RESULT_RECEIVED":
       return ChatMessageType.W_RECLAIM_URL_TEST_RESULT_RECEIVED;
     case 7:
-    case "M_TARGET_URL":
-      return ChatMessageType.M_TARGET_URL;
+    case "TARGET_URL":
+      return ChatMessageType.TARGET_URL;
     case 8:
     case "M_NETWORK_REQUESTS_AND_RESPONSES":
       return ChatMessageType.M_NETWORK_REQUESTS_AND_RESPONSES;
@@ -140,6 +143,15 @@ export function chatMessageTypeFromJSON(object: any): ChatMessageType {
     case 15:
     case "CONNECTED":
       return ChatMessageType.CONNECTED;
+    case 16:
+    case "FORCE_REFRESH":
+      return ChatMessageType.FORCE_REFRESH;
+    case 17:
+    case "CAPTURE_CURRENT_PAGE_SOURCE":
+      return ChatMessageType.CAPTURE_CURRENT_PAGE_SOURCE;
+    case 18:
+    case "CAPTURE_COOKIES":
+      return ChatMessageType.CAPTURE_COOKIES;
     case -1:
     case "UNRECOGNIZED":
     default:
@@ -149,8 +161,8 @@ export function chatMessageTypeFromJSON(object: any): ChatMessageType {
 
 export function chatMessageTypeToJSON(object: ChatMessageType): string {
   switch (object) {
-    case ChatMessageType.W_TARGET_URL_RECEIVED:
-      return "W_TARGET_URL_RECEIVED";
+    case ChatMessageType.M_TARGET_URL_RECEIVED:
+      return "M_TARGET_URL_RECEIVED";
     case ChatMessageType.W_NETWORK_REQUESTS_AND_RESPONSES_RECEIVED:
       return "W_NETWORK_REQUESTS_AND_RESPONSES_RECEIVED";
     case ChatMessageType.W_POTENTIAL_NETWORK_REQUEST:
@@ -163,8 +175,8 @@ export function chatMessageTypeToJSON(object: ChatMessageType): string {
       return "W_RECLAIM_URL";
     case ChatMessageType.W_RECLAIM_URL_TEST_RESULT_RECEIVED:
       return "W_RECLAIM_URL_TEST_RESULT_RECEIVED";
-    case ChatMessageType.M_TARGET_URL:
-      return "M_TARGET_URL";
+    case ChatMessageType.TARGET_URL:
+      return "TARGET_URL";
     case ChatMessageType.M_NETWORK_REQUESTS_AND_RESPONSES:
       return "M_NETWORK_REQUESTS_AND_RESPONSES";
     case ChatMessageType.M_POTENTIAL_NETWORK_REQUEST_RECEIVED:
@@ -181,6 +193,12 @@ export function chatMessageTypeToJSON(object: ChatMessageType): string {
       return "CONNECTION_PENDING";
     case ChatMessageType.CONNECTED:
       return "CONNECTED";
+    case ChatMessageType.FORCE_REFRESH:
+      return "FORCE_REFRESH";
+    case ChatMessageType.CAPTURE_CURRENT_PAGE_SOURCE:
+      return "CAPTURE_CURRENT_PAGE_SOURCE";
+    case ChatMessageType.CAPTURE_COOKIES:
+      return "CAPTURE_COOKIES";
     case ChatMessageType.UNRECOGNIZED:
     default:
       return "UNRECOGNIZED";

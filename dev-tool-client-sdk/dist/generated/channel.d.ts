@@ -16,14 +16,14 @@ export declare enum SessionResponseStatusType {
 export declare function sessionResponseStatusTypeFromJSON(object: any): SessionResponseStatusType;
 export declare function sessionResponseStatusTypeToJSON(object: SessionResponseStatusType): string;
 export declare enum ChatMessageType {
-    W_TARGET_URL_RECEIVED = 0,
+    M_TARGET_URL_RECEIVED = 0,
     W_NETWORK_REQUESTS_AND_RESPONSES_RECEIVED = 1,
     W_POTENTIAL_NETWORK_REQUEST = 2,
     W_POTENTIAL_NETWORK_REQUEST_TEST_RESULT_RECEIVED = 3,
     W_LOGIN_URL_RECEIVED = 4,
     W_RECLAIM_URL = 5,
     W_RECLAIM_URL_TEST_RESULT_RECEIVED = 6,
-    M_TARGET_URL = 7,
+    TARGET_URL = 7,
     M_NETWORK_REQUESTS_AND_RESPONSES = 8,
     M_POTENTIAL_NETWORK_REQUEST_RECEIVED = 9,
     M_POTENTIAL_NETWORK_REQUEST_TEST_RESULT = 10,
@@ -32,6 +32,9 @@ export declare enum ChatMessageType {
     M_RECLAIM_URL_TEST_RESULT = 13,
     CONNECTION_PENDING = 14,
     CONNECTED = 15,
+    FORCE_REFRESH = 16,
+    CAPTURE_CURRENT_PAGE_SOURCE = 17,
+    CAPTURE_COOKIES = 18,
     UNRECOGNIZED = -1
 }
 export declare function chatMessageTypeFromJSON(object: any): ChatMessageType;
