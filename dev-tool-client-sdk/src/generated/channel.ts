@@ -90,6 +90,9 @@ export enum ChatMessageType {
   FORCE_REFRESH = 16,
   CAPTURE_CURRENT_PAGE_SOURCE = 17,
   CAPTURE_COOKIES = 18,
+  W_SET_CURRENT_URL = 19,
+  /** M_SET_CURRENT_URL - to be sent by app to web */
+  M_SET_CURRENT_URL = 20,
   UNRECOGNIZED = -1,
 }
 
@@ -152,6 +155,12 @@ export function chatMessageTypeFromJSON(object: any): ChatMessageType {
     case 18:
     case "CAPTURE_COOKIES":
       return ChatMessageType.CAPTURE_COOKIES;
+    case 19:
+    case "W_SET_CURRENT_URL":
+      return ChatMessageType.W_SET_CURRENT_URL;
+    case 20:
+    case "M_SET_CURRENT_URL":
+      return ChatMessageType.M_SET_CURRENT_URL;
     case -1:
     case "UNRECOGNIZED":
     default:
@@ -199,6 +208,10 @@ export function chatMessageTypeToJSON(object: ChatMessageType): string {
       return "CAPTURE_CURRENT_PAGE_SOURCE";
     case ChatMessageType.CAPTURE_COOKIES:
       return "CAPTURE_COOKIES";
+    case ChatMessageType.W_SET_CURRENT_URL:
+      return "W_SET_CURRENT_URL";
+    case ChatMessageType.M_SET_CURRENT_URL:
+      return "M_SET_CURRENT_URL";
     case ChatMessageType.UNRECOGNIZED:
     default:
       return "UNRECOGNIZED";
