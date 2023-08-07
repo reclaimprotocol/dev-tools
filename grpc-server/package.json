@@ -16,7 +16,8 @@
     "long": "^5.2.3",
     "nice-grpc": "^2.1.4",
     "pino": "^8.14.1",
-    "protobufjs": "^7.2.4"
+    "protobufjs": "^7.2.4",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@creatoros/eslint-config": "git+https://github.com/CreatorOS/eslint-config",
