@@ -113,6 +113,9 @@ var ChatMessageType;
     ChatMessageType[ChatMessageType["FORCE_REFRESH"] = 16] = "FORCE_REFRESH";
     ChatMessageType[ChatMessageType["CAPTURE_CURRENT_PAGE_SOURCE"] = 17] = "CAPTURE_CURRENT_PAGE_SOURCE";
     ChatMessageType[ChatMessageType["CAPTURE_COOKIES"] = 18] = "CAPTURE_COOKIES";
+    ChatMessageType[ChatMessageType["W_SET_CURRENT_URL"] = 19] = "W_SET_CURRENT_URL";
+    /** M_SET_CURRENT_URL - to be sent by app to web */
+    ChatMessageType[ChatMessageType["M_SET_CURRENT_URL"] = 20] = "M_SET_CURRENT_URL";
     ChatMessageType[ChatMessageType["UNRECOGNIZED"] = -1] = "UNRECOGNIZED";
 })(ChatMessageType || (exports.ChatMessageType = ChatMessageType = {}));
 function chatMessageTypeFromJSON(object) {
@@ -174,6 +177,12 @@ function chatMessageTypeFromJSON(object) {
         case 18:
         case "CAPTURE_COOKIES":
             return ChatMessageType.CAPTURE_COOKIES;
+        case 19:
+        case "W_SET_CURRENT_URL":
+            return ChatMessageType.W_SET_CURRENT_URL;
+        case 20:
+        case "M_SET_CURRENT_URL":
+            return ChatMessageType.M_SET_CURRENT_URL;
         case -1:
         case "UNRECOGNIZED":
         default:
@@ -221,6 +230,10 @@ function chatMessageTypeToJSON(object) {
             return "CAPTURE_CURRENT_PAGE_SOURCE";
         case ChatMessageType.CAPTURE_COOKIES:
             return "CAPTURE_COOKIES";
+        case ChatMessageType.W_SET_CURRENT_URL:
+            return "W_SET_CURRENT_URL";
+        case ChatMessageType.M_SET_CURRENT_URL:
+            return "M_SET_CURRENT_URL";
         case ChatMessageType.UNRECOGNIZED:
         default:
             return "UNRECOGNIZED";

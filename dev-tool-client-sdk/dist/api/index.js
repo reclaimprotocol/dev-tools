@@ -86,25 +86,30 @@ class ChatBackendClient {
             metadata.set('Authorization', this.accessToken);
             const messages = [];
             try {
-                for (var _d = true, _e = __asyncValues(client.receiveMessage({}, {
-                    metadata
-                })), _f; _f = yield _e.next(), _a = _f.done, !_a; _d = true) {
-                    _c = _f.value;
-                    _d = false;
-                    const response = _c;
-                    console.log('response', response);
-                    // return response
-                    messages.push(response);
-                }
-            }
-            catch (e_1_1) { e_1 = { error: e_1_1 }; }
-            finally {
                 try {
-                    if (!_d && !_a && (_b = _e.return)) yield _b.call(_e);
+                    for (var _d = true, _e = __asyncValues(client.receiveMessage({}, {
+                        metadata
+                    })), _f; _f = yield _e.next(), _a = _f.done, !_a; _d = true) {
+                        _c = _f.value;
+                        _d = false;
+                        const response = _c;
+                        console.log('response', response);
+                        // return response
+                        messages.push(response);
+                    }
                 }
-                finally { if (e_1) throw e_1.error; }
+                catch (e_1_1) { e_1 = { error: e_1_1 }; }
+                finally {
+                    try {
+                        if (!_d && !_a && (_b = _e.return)) yield _b.call(_e);
+                    }
+                    finally { if (e_1) throw e_1.error; }
+                }
+                return messages;
             }
-            return messages;
+            catch (err) {
+                throw err;
+            }
         });
     }
 }

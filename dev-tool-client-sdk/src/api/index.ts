@@ -10,7 +10,7 @@ export class ChatBackendClient {
 		this.clientType = clientType
 	}
 
-	private getClient = async() => {
+	private getClient = async () => {
 		const client = await makeGrpcClient(this.accessToken, this.clientType)
 		return client
 	}
@@ -21,7 +21,7 @@ export class ChatBackendClient {
 			const response = await client.generateSession({})
 			console.log('response received', response)
 			return response
-		} catch(err) {
+		} catch (err) {
 			throw err
 		}
 	}
@@ -32,7 +32,7 @@ export class ChatBackendClient {
 			const response = await client.joinSession({ sessionId })
 			console.log('join session response', response)
 			return response
-		} catch(err) {
+		} catch (err) {
 			throw err
 		}
 	}
@@ -53,7 +53,7 @@ export class ChatBackendClient {
 
 			console.log('send message response', response)
 			return response
-		} catch(err) {
+		} catch (err) {
 			throw err
 		}
 	}
@@ -67,15 +67,19 @@ export class ChatBackendClient {
 
 		const messages: ChatMessage[] = []
 
-		for await (const response of client.receiveMessage({}, {
-			metadata
-		})) {
-			console.log('response', response)
-			// return response
-			messages.push(response)
-		}
+		try {
+			for await (const response of client.receiveMessage({}, {
+				metadata
+			})) {
+				console.log('response', response)
+				// return response
+				messages.push(response)
+			}
 
-		return messages
+			return messages
+		} catch (err) {
+			throw err
+		}
 	}
 
 }

@@ -35,6 +35,9 @@ export declare enum ChatMessageType {
     FORCE_REFRESH = 16,
     CAPTURE_CURRENT_PAGE_SOURCE = 17,
     CAPTURE_COOKIES = 18,
+    W_SET_CURRENT_URL = 19,
+    /** M_SET_CURRENT_URL - to be sent by app to web */
+    M_SET_CURRENT_URL = 20,
     UNRECOGNIZED = -1
 }
 export declare function chatMessageTypeFromJSON(object: any): ChatMessageType;
