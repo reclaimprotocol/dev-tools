@@ -51,8 +51,8 @@ enum ChatMessageType {
   CAPTURE_CURRENT_PAGE_SOURCE = 17;
   W_SET_CURRENT_URL = 19;
   M_SET_CURRENT_URL = 20; // to be sent by app to web
-  M_SET_NEW_ACCESS_TOKEN = 21;
-  M_CLEAR_COOKIES = 22;
+  W_SET_NEW_ACCESS_TOKEN = 21;
+  W_CLEAR_COOKIES = 22;
 }
 
 message ChatMessage {

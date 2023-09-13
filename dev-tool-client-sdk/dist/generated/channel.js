@@ -115,8 +115,8 @@ var ChatMessageType;
     ChatMessageType[ChatMessageType["W_SET_CURRENT_URL"] = 19] = "W_SET_CURRENT_URL";
     /** M_SET_CURRENT_URL - to be sent by app to web */
     ChatMessageType[ChatMessageType["M_SET_CURRENT_URL"] = 20] = "M_SET_CURRENT_URL";
-    ChatMessageType[ChatMessageType["M_SET_NEW_ACCESS_TOKEN"] = 21] = "M_SET_NEW_ACCESS_TOKEN";
-    ChatMessageType[ChatMessageType["M_CLEAR_COOKIES"] = 22] = "M_CLEAR_COOKIES";
+    ChatMessageType[ChatMessageType["W_SET_NEW_ACCESS_TOKEN"] = 21] = "W_SET_NEW_ACCESS_TOKEN";
+    ChatMessageType[ChatMessageType["W_CLEAR_COOKIES"] = 22] = "W_CLEAR_COOKIES";
     ChatMessageType[ChatMessageType["UNRECOGNIZED"] = -1] = "UNRECOGNIZED";
 })(ChatMessageType || (exports.ChatMessageType = ChatMessageType = {}));
 function chatMessageTypeFromJSON(object) {
@@ -182,11 +182,11 @@ function chatMessageTypeFromJSON(object) {
         case "M_SET_CURRENT_URL":
             return ChatMessageType.M_SET_CURRENT_URL;
         case 21:
-        case "M_SET_NEW_ACCESS_TOKEN":
-            return ChatMessageType.M_SET_NEW_ACCESS_TOKEN;
+        case "W_SET_NEW_ACCESS_TOKEN":
+            return ChatMessageType.W_SET_NEW_ACCESS_TOKEN;
         case 22:
-        case "M_CLEAR_COOKIES":
-            return ChatMessageType.M_CLEAR_COOKIES;
+        case "W_CLEAR_COOKIES":
+            return ChatMessageType.W_CLEAR_COOKIES;
         case -1:
         case "UNRECOGNIZED":
         default:
@@ -236,10 +236,10 @@ function chatMessageTypeToJSON(object) {
             return "W_SET_CURRENT_URL";
         case ChatMessageType.M_SET_CURRENT_URL:
             return "M_SET_CURRENT_URL";
-        case ChatMessageType.M_SET_NEW_ACCESS_TOKEN:
-            return "M_SET_NEW_ACCESS_TOKEN";
-        case ChatMessageType.M_CLEAR_COOKIES:
-            return "M_CLEAR_COOKIES";
+        case ChatMessageType.W_SET_NEW_ACCESS_TOKEN:
+            return "W_SET_NEW_ACCESS_TOKEN";
+        case ChatMessageType.W_CLEAR_COOKIES:
+            return "W_CLEAR_COOKIES";
         case ChatMessageType.UNRECOGNIZED:
         default:
             return "UNRECOGNIZED";

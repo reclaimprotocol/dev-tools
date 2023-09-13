@@ -37,8 +37,8 @@ export declare enum ChatMessageType {
     W_SET_CURRENT_URL = 19,
     /** M_SET_CURRENT_URL - to be sent by app to web */
     M_SET_CURRENT_URL = 20,
-    M_SET_NEW_ACCESS_TOKEN = 21,
-    M_CLEAR_COOKIES = 22,
+    W_SET_NEW_ACCESS_TOKEN = 21,
+    W_CLEAR_COOKIES = 22,
     UNRECOGNIZED = -1
 }
 export declare function chatMessageTypeFromJSON(object: any): ChatMessageType;
