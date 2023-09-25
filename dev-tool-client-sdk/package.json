@@ -7,7 +7,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@questbook/common-grpc-web-transport": "github:questbook/common-grpc-web-transport",
+    "@improbable-eng/grpc-web-react-native-transport": "^0.15.0",
     "grpc-tools": "^1.12.4",
     "nice-grpc-common": "^2.0.2",
     "nice-grpc-web": "^2.0.2",
