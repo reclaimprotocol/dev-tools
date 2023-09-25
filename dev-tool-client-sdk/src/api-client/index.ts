@@ -6,13 +6,8 @@ import { CommonTransport } from '@questbook/common-grpc-web-transport'
 async function makeGrpcClient(accessToken: string, clientType: string) {
 	// grpc-web channel
 	let channel: Channel
-	if (clientType === 'app') {
-		const transport = CommonTransport({});
-		channel = createChannel(BACKEND_URL, transport)
-	}
-	else {
-		channel = createChannel(BACKEND_URL)
-	}
+	const transport = CommonTransport({});
+	channel = createChannel(BACKEND_URL, transport)
 	// metadata for auth token
 	const metadata = new Metadata()
 
