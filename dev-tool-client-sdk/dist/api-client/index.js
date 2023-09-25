@@ -13,20 +13,13 @@ exports.makeGrpcClient = void 0;
 const nice_grpc_web_1 = require("nice-grpc-web");
 const config_1 = require("../config");
 const channel_1 = require("../generated/channel");
-const grpc_web_react_native_transport_1 = require("@improbable-eng/grpc-web-react-native-transport");
+const common_grpc_web_transport_1 = require("@questbook/common-grpc-web-transport");
 function makeGrpcClient(accessToken, clientType) {
     return __awaiter(this, void 0, void 0, function* () {
         // grpc-web channel
         let channel;
-        if (clientType === 'app') {
-            const transport = (0, grpc_web_react_native_transport_1.ReactNativeTransport)({
-                withCredentials: false,
-            });
-            channel = (0, nice_grpc_web_1.createChannel)(config_1.BACKEND_URL, transport);
-        }
-        else {
-            channel = (0, nice_grpc_web_1.createChannel)(config_1.BACKEND_URL);
-        }
+        const transport = (0, common_grpc_web_transport_1.CommonTransport)({});
+        channel = (0, nice_grpc_web_1.createChannel)(config_1.BACKEND_URL, transport);
         // metadata for auth token
         const metadata = new nice_grpc_web_1.Metadata();
         metadata.set('Authorization', accessToken);
