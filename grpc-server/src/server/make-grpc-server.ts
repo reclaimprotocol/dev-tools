@@ -47,7 +47,7 @@ async function* validateRPC<Req, Res>(
 		if(!accessToken) {
 			throw new ServerError(Status.UNAUTHENTICATED, 'authorization token is missing')
 		} else {
-			const validationEndpoint = 'https://api.reclaimprotocol.org/validate-user'
+			const validationEndpoint = 'https://api.reclaimprotocol.org/api/users/validate'
 
 			const response = await axios.get(validationEndpoint, {
 				headers: {
